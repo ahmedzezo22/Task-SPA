@@ -1,1 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic); */
+/* @import url('../src/assets/css/bootstrap.min.css');
+@import url('../src/assets/css/bootstrap-reset.css');
+@import url('../src/assets/fonts/css/font-awesome.min.css'); */
+@import '~font-awesome/css/font-awesome.css';

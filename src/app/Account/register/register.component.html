@@ -1,0 +1,102 @@
+<div class="body" >
+
+<div class="container">
+
+  <form class="form-signin"[formGroup]="registerForm" (ngSubmit)="register()">
+      <div class="form-signin-heading text-center">
+          <h1 class="sign-title">Registration</h1>
+          <img src="assets/images/login-logo.png" alt=""/>
+      </div>
+
+
+      <div class="login-wrap">
+          <p>Enter your personal details below</p>
+          <input type="text" autofocus=""
+           placeholder="userName" formControlName="userName"
+         [ngClass]="{'is-invalid':this.registerForm.get('userName').invalid&& this.registerForm.get('userName').touched }"
+         [ngClass]="{'is-valid':this.registerForm.get('userName').valid&& this.registerForm.get('userName').touched }"class="form-control">
+         <div class="text-danger" *ngIf="this.registerForm.get('userName').hasError('required') && this.registerForm.get('userName').touched ">userName required</div>
+
+          <div class="text-danger" *ngIf="this.registerForm.get('userName').hasError('maxlength') && this.registerForm.get('userName').touched ">userName must be less than 200 characters</div>
+
+          <div class="text-danger" *ngIf="this.registerForm.get('userName').hasError('minlength') && this.registerForm.get('userName').touched ">userName must be greater than 6 characters</div>
+          <input type="text" autofocus="" placeholder="Address" formControlName="address"
+          [ngClass]="{'is-invalid': this.registerForm.get('address').invalid&&this.registerForm.get('address').touched}"
+           [ngClass]="{'is-valid': this.registerForm.get('address').valid&&this.registerForm.get('address').touched}"
+
+           class="form-control">
+          <div class="text-danger" *ngIf="this.registerForm.get('address').hasError('required') && this.registerForm.get('address').touched ">address required</div>
+
+          <input type="text" autofocus="" placeholder="Email"
+
+           [ngClass]="{'is-invalid': this.registerForm.get('email').invalid&&this.registerForm.get('email').touched}"
+           [ngClass]="{'is-valid': this.registerForm.get('email').valid&&this.registerForm.get('email').touched}"
+
+          formControlName="email" class="form-control">
+           <div class="text-danger" *ngIf="this.registerForm.get('email').hasError('required') && this.registerForm.get('email').touched ">email required</div>
+           <div class="text-danger" *ngIf="this.registerForm.get('email').hasError('email') && this.registerForm.get('email').touched ">please Enter correct email</div>
+          <input type="text" autofocus="" placeholder="City/Town"
+
+           [ngClass]="{'is-invalid': this.registerForm.get('city').invalid&&this.registerForm.get('city').touched}"
+           [ngClass]="{'is-valid': this.registerForm.get('city').valid&&this.registerForm.get('city').touched}"
+
+          formControlName="city" class="form-control">
+         <div class="text-danger" *ngIf="this.registerForm.get('city').hasError('required') && this.registerForm.get('city').touched ">city required</div>
+          <div class="radios">
+              <label for="radio-01" class="label_radio col-lg-6 col-sm-6">
+                  <input type="radio" checked="" value="Male" formControlName="gender" id="radio-01" name="gender"> Male
+              </label>
+              <label for="radio-02" class="label_radio col-lg-6 col-sm-6">
+                  <input type="radio" value="Female" formControlName="gender" id="radio-02" name="gender"> Female
+              </label>
+
+          </div>
+
+          <p> Enter your account details below</p>
+          <input type="password" placeholder="Password" formControlName="password" class="form-control"
+           [ngClass]="{'is-invalid': this.registerForm.get('password').invalid&&this.registerForm.get('password').touched}"
+           [ngClass]="{'is-valid': this.registerForm.get('password').valid&&this.registerForm.get('password').touched}"
+          >
+
+
+           <div class="text-danger" *ngIf="this.registerForm.get('password').hasError('required') &&
+           this.registerForm.get('password').touched ">password required</div>
+
+           <div class="text-danger" *ngIf="this.registerForm.get('password').hasError('maxlength') && this.registerForm.get('password').touched ">password must be smaller than 100</div>
+
+             <div class="text-danger" *ngIf="this.registerForm.get('password').hasError('minlength') && this.registerForm.get('password').touched ">password must be greater than 8 characters</div>
+           <div class="text-danger" *ngIf="!passwordPattern() && this.registerForm.get('password').touched">
+                {{msg}}
+              </div>
+          <input type="password" placeholder="Re-type Password"
+           formControlName="confirmPassword"
+            [ngClass]="{'is-invalid': this.registerForm.get('confirmPassword').
+            invalid&&this.registerForm.get('confirmPassword').touched}"
+           [ngClass]="{'is-valid': this.registerForm.get('confirmPassword').valid&&this.registerForm.get('confirmPassword').touched}"
+
+
+           class="form-control">
+       <div class="text-danger" *ngIf="this.registerForm.get('confirmPassword').hasError('maxlength') && this.registerForm.get('confirmPassword').touched ">password must be smaller than 100</div>
+
+             <div class="text-danger" *ngIf="this.registerForm.get('confirmPassword').hasError('minlength') && this.registerForm.get('confirmPassword').touched ">password must be greater than 8 characters</div>
+         <div class="text-danger" *ngIf="this.registerForm.hasError('mismatch')&& this.registerForm.get('confirmPassword').touched">   password and confirmPassword not match    </div>
+
+          <label class="checkbox">
+              <input type="checkbox"  formControlName="agreeTerms"> I agree to the Terms of Service and Privacy Policy
+          </label>
+          <button type="submit"[disabled]="this.registerForm.invalid || !this.registerForm.get('agreeTerms').value" class="btn btn-lg btn-login btn-block">
+              <i class="fa fa-check"></i>
+          </button>
+          <div class="registration">
+              Already Registered.
+              <a [routerLink]="['/login']" routerLinkActive="router-link-active"  class="">
+                  Login
+              </a>
+          </div>
+
+      </div>
+
+  </form>
+
+</div>
+</div>
